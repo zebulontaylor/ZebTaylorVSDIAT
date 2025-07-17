@@ -12,13 +12,18 @@ The first three steps of the OpenLane flow: `run_synthesis, run_floorplan, run_p
 
 To view the output of the floorplan, you can use `magic`. In the tcl shell, run `magic -T $env(PDK_ROOT)/$env(PDK)/libs.tech/magic/$env(PDK).tech lef read $env(RUN_DIR)/tmp/merged.nom.lef def read $env(RUN_DIR)/results/floorplan/picorv32a.def &`.
 
+**For some/most people, the file in the last command will be called `picorv32.def`, not `picorv32a.def`. Update the command accordingly.**
+
+
 ![alt text](image-4.png)
 
 If you do not see the pink/blue lines, you have the wrong PDK path. Make sure you are using the correct relative location and that you spelled everything right, or just use the command I provided.
 
 ---
 
-To view the output of the placement, simply modify the folder used in the `magic` command. Run  `magic -T $env(PDK_ROOT)/$env(PDK)/libs.tech/magic/$env(PDK).tech lef read $env(RUN_DIR)/tmp/merged.nom.lef def read $env(RUN_DIR)/results/placement/picorv32a.def &`
+To view the output of the placement, simply modify the folder used in the `magic` command. Run  `magic -T $env(PDK_ROOT)/$env(PDK)/libs.tech/magic/$env(PDK).tech lef read $env(RUN_DIR)/tmp/merged.nom.lef def read $env(RUN_DIR)/results/placement/picorv32a.def &`.
+
+**For some/most people, the file in the last command will be called `picorv32.def`, not `picorv32a.def`. Update the command accordingly.**
 
 ![alt text](image-3.png)
 
