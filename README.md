@@ -53,7 +53,25 @@ As the blocks are placed, they get surrounded with "decoupling capacitors," to s
 
 In order to mitigate "ground bounces" or "voltage drops" (when gnd increases or vdd drops), power is distributed in the chip through grided distribution wires with contacts at the intersections.
 
+To maintain signal integrity over longer wire distances, repeaters must be placed. This also helps address the capacitance of the wire.
+
 ### Software
 
 To modify the configuration of a design, alter `designs/[yourdesign]/config.tcl`. This does NOT have precedent over the PDK's `.tcl` file, however.
+
+Cells are stored in the "cell library", which serves as a list of all cells and their characteristics - size, delay, voltage, inputs/outputs, etc. Placement tools then use this information when placing the standard cells.
+
+Here is a standard cell (NAND) and its extracted netlist that I built for the Skywater PDK:
+
+![alt text](image-7.png)
+
+(the name of the file is wrong, it should be called `nand.ext`/`nand.mag`)
+
+And its spice netlist:
+
+![alt text](image-6.png)
+
+And its simulated outputs:
+
+![alt text](image-8.png)
 
