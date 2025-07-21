@@ -55,11 +55,15 @@ In order to mitigate "ground bounces" or "voltage drops" (when gnd increases or 
 
 To maintain signal integrity over longer wire distances, repeaters must be placed. This also helps address the capacitance of the wire.
 
+Propogation delay is $\text{time}_{\text{out threshold}} - \text{time}_{\text{in threshold}}$. Rise transition time is $\text{time}_{\text{slew low rise}} - \text{time}_{\text{slew high rise}}$, fall transition time is vice versa.
+
 ### Software
 
 To modify the configuration of a design, alter `designs/[yourdesign]/config.tcl`. This does NOT have precedent over the PDK's `.tcl` file, however.
 
 Cells are stored in the "cell library", which serves as a list of all cells and their characteristics - size, delay, voltage, inputs/outputs, etc. Placement tools then use this information when placing the standard cells.
+
+## Day 3
 
 Here is a standard cell (NAND) and its extracted netlist that I built for the Skywater PDK:
 
@@ -74,4 +78,6 @@ And its spice netlist:
 And its simulated outputs:
 
 ![alt text](image-8.png)
+
+(an LLM was used to generate `and_sim.spice`, the testbench)
 
