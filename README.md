@@ -81,3 +81,34 @@ And its simulated outputs:
 
 (an LLM was used to generate `and_sim.spice`, the testbench)
 
+![alt text](image-9.png)
+
+## Day 4
+
+![alt text](image-10.png)
+
+To get the power generation working I had to add a new variable:
+
+```tcl
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_MIN) "$::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_MAX) "$::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0  ## NEW
+
+## WHEN IN FLOW.TCL:
+#set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+#add_lefs -src $lefs
+```
+I also had to comment out a portion of `openlane/scripts/tcl_commands/floorplan.tcl`:
+
+![alt text](image-13.png)
+
+
+Once these changes are made, `run_synthesis`, `run_floorplan`, and `run_placement` work perfectly.
+
+![alt text](image-12.png)
+
